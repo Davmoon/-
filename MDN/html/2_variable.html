@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button_A">Press me</button>
+    <h3 id="heading_A"></h3>
+    <script>
+        const buttonA = document.querySelector("#button_A");
+        const headingA = document.querySelector('#heading_A');
+
+        buttonA.onclick = () => {
+            const name = prompt("What is your name?");
+
+            let hello = "hello" //호이스팅 불가
+            var hello1 = "hello1" // 호이스팅 가능, 사용금지!!
+
+            alert(`hello ${name}, nice to see you!`);
+            headingA.textContent = `Welcome ${name}`;
+        };
+
+    </script>
+</body>
+</html>
