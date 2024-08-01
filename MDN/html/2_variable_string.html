@@ -17,7 +17,13 @@
 
             let hello = "hello" //호이스팅 불가
             var hello1 = "hello1" // 호이스팅 가능, 사용금지!!
-
+            const hel = `hello ${hello}world!`; // 템플릿 리터럴. 여기서는 ${} 사용가능
+            console.log(hel + ", " + hello); // 여기서는 ${} 사용 불가
+            const hell = `hello ${hello + hello1} world!`; //js 표현식도 포함 가능
+            console.log(hello.indexOf("ell"));
+            /*slice, replace, includes, split(배열을 반환), join(배열)
+            push(배열), pop(배열) unshift(맨 처음), shift(맨처음)
+            */
             alert(`hello ${name}, nice to see you!`);
             headingA.textContent = `Welcome ${name}`;
         };
