@@ -43,6 +43,6 @@ function result() {
 
   }
 
-  story.textContent = newStory;
+  story.textContent = newStory; // innerText도 된담
   story.style.visibility = 'visible';
 }
