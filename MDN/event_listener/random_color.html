@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Random color example — event handler property</title>
+    <style>
+      button {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Change color</button>
+    <script>
+      const btn = document.querySelector('button');
+
+      function random(number) {
+        return Math.floor(Math.random()*number);
+      }
+
+      function bgChange(e) {
+        const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+        //document.body.style.backgroundColor = rndCol;
+        e.target.style.backgroundColor = rndCol; // e.target은 매우 중요한 개념. 이벤트가 발생한 곳을 지정. (for문, foreach문등 사용)
+        
+
+        //e.stopPropagation(); //이벤트 버블링을 방지할 수 있음. 
+      }
+
+      //btn.onclick = bgChange;
+      //btn.onfocus = bgChange;
+      //btn.onblur = bgChange;
+      //btn.ondblclick = bgChange;
+      //window.onkeydown = bgChange;
+      //window.donkeyup = bgChange;
+      //btn.onmouseover = bgChange;
+      //btn.onmouseout = bgChange;
+
+      btn.addEventListener("click", bgChange);
+      btn.removeEventListener("click", bgChange);
+
+      const controller =  new AbortController();
+
+        btn.addEventListener("click", ()=>{
+            var rndCol = "rgb(" + random(255) + "," + random(255) + "," + random(255) + ")";
+            document.body.style.backgroundColor = rndCol;},
+            {signal:controller.signal},
+        );
+
+        //controller.abort(); // 이 컨트롤러와 연관된 모든 이벤트 핸들러 제거
+
+    </script>
+  </body>
+</html>
