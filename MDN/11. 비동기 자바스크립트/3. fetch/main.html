@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const fetchPromise = fetch(
+            "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+        );
+        
+        // console.log(fetchPromise);
+        //
+        // fetchPromise.then((response)=>{
+        //     const jsonP = response.json();
+        //     jsonP.then((data)=> {
+        //         console.log(data[0].name);
+        //     })
+        //     console.log(`응답 수신 : ${response.status}`);
+        // });
+
+        //이렇게 callback지옥을 사용하지 않고 구현 가능
+        fetchPromise
+            .then((response) => {
+                if (!response.ok){
+                    throw new Error(`HTTP error:${response.status}`);
+                }
+                response.json();
+            })
+            .then((data) => {
+                console.log(data[0].name);
+            })
+            .catch((error)=>{
+                console.error(`자료 획득 불가${error}`);
+            });
+
+        
+        console.log("요청 시작");
+    </script>
+</body>
+</html>
