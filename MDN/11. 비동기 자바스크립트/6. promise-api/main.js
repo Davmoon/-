@@ -17,21 +17,19 @@ const delay = document.querySelector("#delay");
 const button = document.querySelector("#set-alarm");
 const output = document.querySelector("#output");
 
-function alarm(person, delay){
-    // Promise에 new를 적어주지 않으면 생성자생성이 불가능해서 reject, resolve 사용 불가
-    return new Promise((resolve, reject)=>{
-        if (delay < 0){
-            throw new Error("알람 시간은 음수가 불가");
-        }
-        setTimeout(()=>{
-            resolve(`wake up, ${person}!`);
-        }, delay);
-    });
+function alarm(person, delay) {
+  return new Promise((resolve, reject) => {
+    if (delay < 0) {
+      throw new Error("Alarm delay must not be negative");
+    }
+    setTimeout(() => {
+      resolve(`Wake up, ${person}!`);
+    }, delay);
+  });
 }
 
 button.addEventListener("click", () => {
-    alarm(name.value, delay.value)
-    .then((message)=>{
-        output.textContent = message})
-    .catch((error)=>{output.textContent = `알람 세팅 불가 : ${error}`});
+  alarm(name.value, delay.value)
+    .then((message) => (output.textContent = message))
+    .catch((error) => (output.textContent = `Couldn't set alarm: ${error}`));
 });
