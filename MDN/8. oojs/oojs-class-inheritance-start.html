@@ -90,6 +90,7 @@
       }
 
       function Teacher(fist, last, age, gender, interests, subject){
+        // Person의 생성자를 호출하는 것. Teacher은 생성자를 여기에 더 덧붙여서 사용할 수 있음.
         Person.call(this, first, last, aged, gender, interests);
 
         this.subject = subject;
@@ -97,8 +98,11 @@
 
       let person1 = new Person('Tammi', 'Smith', 17, 'female', ['music', 'skiing', 'kickboxing']);
 
+      //Teacher이 Person의 객체의 메서드, 속성에 접근할 수 있음.
       Teacher.prototype = Object.create(Person.prototype);
 
+      // 이렇게 해줘야 Teacher의 생성자가 teacher로 설정됨. 설정하지 않은 경우
+      // Person의 생성자가 참조될 수 있음
       Teacher.prototype.constructor = Teacher;
       
       Teacher.prototype.greeting = function () {

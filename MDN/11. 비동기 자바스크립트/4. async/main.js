@@ -3,6 +3,8 @@
 // const pe = `hello my name ${hello}`;
 // console.log(pe);
 
+// async는 항상 promise를 반환함. 비동기 코드를 동기 코드처럼 보이도록 만들어줌.
+
 const log = document.querySelector(".event-log");
 document.querySelector("#xhr").addEventListener("click", () =>{
     log.textContext = "";
