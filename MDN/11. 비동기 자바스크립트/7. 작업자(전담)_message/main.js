@@ -1,3 +1,5 @@
+
+
 //generate 를 사용해서 새로운 worker를 생성함
 const worker = new Worker("./generate.js");
 
